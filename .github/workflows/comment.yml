@@ -6,12 +6,15 @@ jobs:
   retract:
     runs-on: ubuntu-latest
     name: Retract a release
-    if: |
-      !github.event.issue.pull_request && (
-        github.event.comment.body == '#retract' ||
-        startsWith(github.event.comment.body, '#retract\n') ||
-        endsWith(github.event.comment.body, '\n#retract') ||
-        contains(github.event.comment.body, '\n#retract\n')
-      )
+    #if: |
+    #  !github.event.issue.pull_request && (
+    #    github.event.comment.body == '#retract' ||
+    #    startsWith(github.event.comment.body, '#retract\n') ||
+    #    endsWith(github.event.comment.body, '\n#retract') ||
+    #    contains(github.event.comment.body, '\n#retract\n')
+    #  )
     steps:
     - run: echo hi
+    - run: python -c 'import os; print(os.environ["WAT"])'
+      env:
+        WAT: ${{github.event.comment.body}}
