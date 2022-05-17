@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: t
     steps:
-    - run: python -c 'import os; print(repr(os.environ["WAT"]))'
+    - run: python -c 'import os; print(repr(os.environ["WAT1"])); print(repr(os.environ["WAT2"]))'
       env:
         WAT1: ${{ fromJSON('"\r\n#retract\r\n"') }}
         WAT2: ${{ format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body) }}
