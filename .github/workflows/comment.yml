@@ -6,11 +6,11 @@ jobs:
   retract:
     runs-on: ubuntu-latest
     name: Retract a release
+    # not a pull request and has `#contains` on a line by itself
+    # fromJSON is used to process escape sequences
     if: |
       !github.event.issue.pull_request &&
-      # has `#contains` on a line by itself
       contains(
-        # fromJSON is used to process escape sequences
         fromJSON('"\r\n#retract\r\n"'),
         format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body)
       )
