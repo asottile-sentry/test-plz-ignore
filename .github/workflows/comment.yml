@@ -9,8 +9,8 @@ jobs:
     if: |
       !github.event.issue.pull_request &&
       contains(
-        "\r\n#retract\r\n",
-        join("", ["\r\n", github.event.comment.body, "\r\n"])
+        '\r\n#retract\r\n',
+        join('', ['\r\n', github.event.comment.body, '\r\n'])
       )
     steps:
     - run: echo hi
