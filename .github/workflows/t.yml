@@ -14,7 +14,7 @@ jobs:
         WAT3: |
           ${{
             contains(
-              fromJSON('"\r\n#retract\r\n"'),
-              format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body)
+              format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body),
+              fromJSON('"\r\n#retract\r\n"')
             )
           }}
