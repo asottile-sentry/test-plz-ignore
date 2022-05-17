@@ -6,9 +6,6 @@ jobs:
   t:
     runs-on: ubuntu-latest
     name: t
-    if: |
-      !github.event.issue.pull_request &&
-      contains('\r\n#retract\r\n', format('\r\n{0}\r\n', github.event.comment.body))
     steps:
     - run: python -c 'import os; print(repr(os.environ["WAT"]))'
       env:
