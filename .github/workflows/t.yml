@@ -7,7 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     name: t
     steps:
-    - run: python -c 'import os; print(repr(os.environ["WAT1"])); print(repr(os.environ["WAT2"]))'
+    - run: python -c 'import os; [print(k, repr(v)) for k, v in sorted(os.environ.items()) if k.startswith("WAT")]'
       env:
         WAT1: ${{ fromJSON('"\r\n#retract\r\n"') }}
         WAT2: ${{ format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body) }}
+        WAT3: |
+          ${{
+            contains(
+              fromJSON('"\r\n#retract\r\n"'),
+              format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body)
+            )
+          }}
