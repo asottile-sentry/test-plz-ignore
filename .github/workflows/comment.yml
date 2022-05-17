@@ -15,6 +15,6 @@ jobs:
     #  )
     steps:
     - run: echo hi
-    - run: python -c 'import os; print(os.environ["WAT"])'
+    - run: python -c 'import os; print(repr(os.environ["WAT"]))'
       env:
         WAT: ${{github.event.comment.body}}
