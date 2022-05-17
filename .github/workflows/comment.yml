@@ -8,10 +8,7 @@ jobs:
     name: Retract a release
     if: |
       !github.event.issue.pull_request &&
-      contains(
-        '\r\n#retract\r\n',
-        join('', ['\r\n', github.event.comment.body, '\r\n'])
-      )
+      contains('\r\n#retract\r\n', format('\r\n{0}\r\n', github.event.comment.body))
     steps:
     - run: echo hi
     - run: python -c 'import os; print(repr(os.environ["WAT"]))'
