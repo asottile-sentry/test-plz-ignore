@@ -1,0 +1,17 @@
+name: Retract Release
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  retract:
+    runs-on: ubuntu-latest
+    name: Retract a release
+    if: |
+      !github.event.issue.pull_request && (
+        github.event.comment.body == '#retract' ||
+        startsWith(github.event.comment.body, '#retract\n') ||
+        endsWith(github.event.comment.body, '\n#retract') ||
+        contains(github.event.comment.body, '\n#retract\n')
+      )
+    steps:
+    - run: echo hi
