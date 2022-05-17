@@ -9,4 +9,5 @@ jobs:
     steps:
     - run: python -c 'import os; print(repr(os.environ["WAT"]))'
       env:
-        WAT: ${{format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body)}}
+        WAT1: ${{ fromJSON('"\r\n#retract\r\n"') }}
+        WAT2: ${{ format(fromJSON('"\r\n{0}\r\n"'), github.event.comment.body) }}
