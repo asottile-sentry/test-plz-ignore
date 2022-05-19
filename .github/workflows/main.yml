@@ -7,7 +7,8 @@ on:
 jobs:
   main:
     name: main
-    runs-on: ubuntu-latest
+    runs-on: osx-arm64
     steps:
     - uses: actions/checkout@v3
     - run: echo hi
+    - run: uname -a
