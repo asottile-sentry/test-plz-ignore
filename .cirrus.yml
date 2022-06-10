@@ -7,7 +7,3 @@ task:
       echo "Hello World from macOS!"
       uname -a
       python3 --version --version
-      which -a tar
-      tar --version
-      which -a gtar
-      gtar --version
