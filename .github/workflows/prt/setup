@@ -18,7 +18,6 @@ def _has_write(repo_id: int, username: str, *, token: str) -> bool:
 
 
 def _remove_label(repo_id: int, pr: int, label: str, *, token: str) -> None:
-    return
     req = urllib.request.Request(
         f'https://api.github.com/repositories/{repo_id}/issues/{pr}/labels/{label}',  # noqa: E501
         method='DELETE',
