@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: echo hi
+    - name: check permissions
+      id: permissions
+      run: .github/workflows/prt/check-permissions ${{ github.event.repository.id }} ${{ github.event.pull_request.user.login }}
     - run: jq . <<< "$EVENT"
       env:
         EVENT: ${{ toJSON(github.event) }}
