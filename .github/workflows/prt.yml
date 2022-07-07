@@ -19,11 +19,14 @@ jobs:
         python3 -uS .github/workflows/prt/setup \
             --repo-id ${{ github.event.repository.id }} \
             --pr ${{ github.event.number }} \
-            --username ${{ github.event.pull_request.user.login }} \
             --event ${{ github.event.action }} \
-            --label-names ${{ toJSON(github.event.pull_request.labels.*.name) }}
+            --username "$ARG_USERNAME" \
+            --label-names "$ARG_LABEL_NAMES"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # these can contain special characters
+        ARG_USERNAME: ${{ github.event.pull_request.user.login }}
+        ARG_LABEL_NAMES: ${{ toJSON(github.event.pull_request.labels.*.name) }}
     - run: jq . <<< "$EVENT"
       env:
         EVENT: ${{ toJSON(github.event) }}
