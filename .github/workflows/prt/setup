@@ -42,8 +42,8 @@ def main() -> int:
 
     if (
             not write_permission and
-            # `reopen` is included here due to close => push => reopen
-            args.event in {'synchronize', 'reopen'} and
+            # `reopened` is included here due to close => push => reopen
+            args.event in {'synchronize', 'reopened'} and
             LABEL in args.label_names
     ):
         print(f'invalidating label({LABEL}) due to code change...')
