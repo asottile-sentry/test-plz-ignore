@@ -2,6 +2,11 @@ on:
   pull_request_target:
     types: [labeled, opened, reopened, synchronize]
   
+# disable special privileges
+permissions:
+  # needed for `actions/checkout` to clone the code
+  contents: read
+    
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -10,4 +15,4 @@ jobs:
     - run: echo hi
     - run: jq . <<< "$EVENT"
       env:
-        EVENT: ${{ toJSON(github.event.pull_request) }}
+        EVENT: ${{ toJSON(github.event) }}
