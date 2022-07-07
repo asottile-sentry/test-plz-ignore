@@ -8,3 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: echo hi
+    - run: jq . <<< "$EVENT"
+      env:
+        EVENT: ${{ toJSON(github.event.pull_request) }}
