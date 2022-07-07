@@ -1,0 +1,9 @@
+on:
+  pull_request_target:
+  
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: echo hi
